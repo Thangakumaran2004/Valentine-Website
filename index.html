@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>License to live with me 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  height:100vh;
+  overflow:hidden;
+  background: radial-gradient(circle at 20% 20%, #ffd6ec, transparent 40%),
+              radial-gradient(circle at 80% 30%, #e4c1ff, transparent 40%),
+              linear-gradient(135deg,#ffe6f4,#f6dcff,#ffe6f0);
+}
+
+.container {
+  position:relative;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:2;
+}
+
+.glass-card {
+  width:420px;
+  max-width:90vw;
+  padding:40px 35px;
+  border-radius:32px;
+  backdrop-filter: blur(25px);
+  background: rgba(255,255,255,0.25);
+  border:1px solid rgba(255,255,255,0.35);
+  box-shadow:
+    0 20px 60px rgba(255,105,180,0.25),
+    inset 0 0 20px rgba(255,255,255,0.3);
+  text-align:center;
+  animation: floatIn 1.8s ease;
+}
+
+@keyframes floatIn {
+  from { opacity:0; transform: translateY(40px) scale(.95);} 
+  to { opacity:1; transform: translateY(0) scale(1);} 
+}
+
+h1 {
+  font-family:'Great Vibes', cursive;
+  font-size:48px;
+  margin-bottom:25px;
+  color:#ff4fa3;
+  text-shadow:0 0 20px rgba(255,100,180,0.6);
+}
+
+.question {
+  font-size:20px;
+  margin-bottom:25px;
+  font-weight:500;
+  color:#5a295a;
+}
+
+.option {
+  width:100%;
+  margin:10px 0;
+  padding:14px;
+  border:none;
+  border-radius:18px;
+  font-size:16px;
+  cursor:pointer;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 10px 25px rgba(255,105,180,0.15);
+  transition: all .4s ease;
+}
+
+.option:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: rgba(255,255,255,0.85);
+}
+
+.popup {
+  position:fixed;
+  top:60px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:18px 28px;
+  border-radius:22px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 15px 40px rgba(255,105,180,0.3);
+  font-size:18px;
+  z-index:5;
+  animation: popupAnim 2.8s ease;
+}
+
+@keyframes popupAnim {
+  0% { opacity:0; transform:translate(-50%,-80px);} 
+  30% { opacity:1; transform:translate(-50%,0);} 
+  70% { opacity:1; }
+  100% { opacity:0; transform:translate(-50%,-40px);} 
+}
+
+/* Ending Screen */
+.ending {
+  position:fixed;
+  inset:0;
+  background: linear-gradient(160deg,#ffd6f0,#e8c9ff,#ffd6ec);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+  animation: fadeIn 2s ease;
+  z-index:3;
+}
+
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+.ending h2 {
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
+  color:#ff4fa3;
+  margin-bottom:20px;
+}
+
+.ending p {
+  font-size:22px;
+  max-width:600px;
+  color:#6b2b6b;
+}
+
+.ending-popup {
+  margin-top:30px;
+  padding:16px 26px;
+  border-radius:20px;
+  background: rgba(255,255,255,0.7);
+  box-shadow:0 10px 30px rgba(255,105,180,0.25);
+  font-size:20px;
+  animation: endingPop 1.5s ease;
+}
+
+@keyframes endingPop {
+  from { opacity:0; transform:translateY(-30px);} 
+  to { opacity:1; transform:translateY(0);} 
+}
+
+/* Hearts */
+.heart {
+  position:fixed;
+  font-size:22px;
+  animation: heartFall linear forwards;
+  pointer-events:none;
+  z-index:1;
+}
+
+@keyframes heartFall {
+  from { transform: translateY(-10vh);} 
+  to { transform: translateY(110vh);} 
+}
+
+/* Sparkle Trail */
+.sparkle {
+  position:fixed;
+  pointer-events:none;
+  font-size:14px;
+  animation: sparkleFade 1s ease forwards;
+  z-index:4;
+}
+
+@keyframes sparkleFade {
+  from { opacity:1; transform: scale(1);} 
+  to { opacity:0; transform: scale(0.3);} 
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="glass-card" id="card">
+    <h1>License to live with me 💕</h1>
+    <div class="question" id="question"></div>
+    <div id="options"></div>
+  </div>
+</div>
+
+<script>
+
+const questions = [
+  {
+    q: "When did we first met ?",
+    options: ["6th August 26","7th August 26","8th August 26","9th August 26"],
+    correct: 1
+  },
+  {
+    q: "What did I save your name in my phone ?",
+    options: ["Sindhu","Sindumathy shanmugakani","sindhumathi shanmugakani","sindumathi S"],
+    correct: 2
+  },
+  {
+    q: "What is your preferred honeymoon location ?",
+    options: ["Kerala","Manali","Shimla","Bali"],
+    correct: -1
+  },
+  {
+    q: "Will you be my forever valentine ?",
+    options: ["Yes !!","No"],
+    correct: 0
+  }
+];
+
+let index = 0;
+let noBtn;
+let interval;
+
+function showQuestion() {
+  const q = questions[index];
+  document.getElementById("question").innerText = q.q;
+
+  const optDiv = document.getElementById("options");
+  optDiv.innerHTML = "";
+
+  q.options.forEach((opt,i)=>{
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.innerText = opt;
+
+    if(index===3 && i===1){
+      noBtn = btn;
+      startNoAnimation();
+    }
+
+    btn.onclick = ()=>handleAnswer(i);
+    optDiv.appendChild(btn);
+  });
+}
+
+function popup(text){
+  const p = document.createElement("div");
+  p.className = "popup";
+  p.innerText = text;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),2800);
+}
+
+function hearts(count=14){
+  for(let i=0;i<count;i++){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText=Math.random()>0.5?"💖":"💗";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(6+Math.random()*6)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),13000);
+  }
+}
+
+function startBackgroundHearts(){
+  setInterval(()=>hearts(6),1800);
+}
+
+/* Sparkle Trail */
+document.addEventListener("mousemove", e => {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.innerText = "✨";
+  s.style.left = e.clientX + "px";
+  s.style.top = e.clientY + "px";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1000);
+});
+
+function handleAnswer(i){
+  if(index===0){
+    if(i===1){
+      popup("Cheers !!!");
+      hearts();
+      setTimeout(next,1000);
+    } else {
+      popup("You already forgot ?? 😢");
+    }
+    return;
+  }
+
+  if(index===1){
+    if(i===2){
+      popup("Bravo !!! 👏");
+      hearts();
+      setTimeout(next,1000);
+    } else {
+      popup("Are you sure ???");
+    }
+    return;
+  }
+
+  if(index===2){
+    popup("COIMBATORE ??? I'm so touched dear");
+    setTimeout(()=>popup("Well Noted Ma 👍"),3000);
+    hearts();
+    setTimeout(next,300);
+
+  if(index===3){
+    if(i===0){
+      clearInterval(interval);
+      showEnding("Yay !! you earned the license to live with me 💕");
+    }
+  }
+  }
+}
+
+function startNoAnimation(){
+  const texts=[
+    "Seriously ? You are thinking about it ?",
+    "Don't do it ! Don't",
+    "Hell with you"
+  ];
+
+  let t=0;
+
+  interval=setInterval(()=>{
+    if(noBtn){
+      noBtn.style.position="fixed";
+      noBtn.style.left=(Math.random()*80+10)+"vw";
+      noBtn.style.top=(Math.random()*80+10)+"vh";
+      noBtn.style.transform="scale(0.85)";
+      noBtn.style.zIndex="6";
+    }
+    popup(texts[t%texts.length]);
+    t++;
+  },3000);
+}
+
+function next(){
+  index++;
+  showQuestion();
+}
+
+function showEnding(message){
+  document.body.innerHTML=`
+  <div class="ending">
+    <h2>Forever Starts Now 💍</h2>
+    <p>
+      You just signed the lifetime contract of love, laughter and unlimited drama with me.
+      No cancellations allowed. Only upgrades — more love, more hugs, more memories.
+      <br><br>
+      Welcome to your permanent position… right next to my heart 💖
+    </p>
+    <div class="ending-popup">${message}</div>
+  </div>`;
+
+  startBackgroundHearts();
+  hearts(20);
+
+
+startBackgroundHearts();
+showQuestion();
+}
+</script>
+
+</body>
+</html>
