@@ -106,7 +106,6 @@ h1 {
   100% { opacity:0; transform:translate(-50%,-40px);} 
 }
 
-/* Ending Screen */
 .ending {
   position:fixed;
   inset:0;
@@ -151,7 +150,6 @@ h1 {
   to { opacity:1; transform:translateY(0);} 
 }
 
-/* Hearts */
 .heart {
   position:fixed;
   font-size:22px;
@@ -165,7 +163,6 @@ h1 {
   to { transform: translateY(110vh);} 
 }
 
-/* Sparkle Trail */
 .sparkle {
   position:fixed;
   pointer-events:none;
@@ -279,6 +276,7 @@ document.addEventListener("mousemove", e => {
 });
 
 function handleAnswer(i){
+
   if(index===0){
     if(i===1){
       popup("Cheers !!!");
@@ -305,14 +303,16 @@ function handleAnswer(i){
     popup("COIMBATORE ??? I'm so touched dear");
     setTimeout(()=>popup("Well Noted Ma 👍"),3000);
     hearts();
-    setTimeout(next,300);
+    setTimeout(next,3000);
+    return;
+  }
 
   if(index===3){
     if(i===0){
       clearInterval(interval);
       showEnding("Yay !! you earned the license to live with me 💕");
     }
-  }
+    return;
   }
 }
 
@@ -358,11 +358,11 @@ function showEnding(message){
 
   startBackgroundHearts();
   hearts(20);
-
+}
 
 startBackgroundHearts();
 showQuestion();
-}
+
 </script>
 
 </body>
