@@ -264,8 +264,8 @@ h1 {
 const questions = [
   {
     q: "When did we first met ?",
-    options: ["6th August 26","7th August 26","8th August 26","9th August 26"],
-    correct: 1
+    options: ["7th August 26","8th August 25","9th August 25","7th August 25"],
+    correct: 2
   },
   {
     q: "What did I save your name in my phone ?",
@@ -372,13 +372,13 @@ function handleAnswer(i){
       hearts();
       setTimeout(next,1000);
     } else {
-      popup("Are you sure ???");
+      popup("Are you sure ??? 😅");
     }
     return;
   }
 
   if(index===2){
-    popup("COIMBATORE ??? I'm so touched dear");
+    popup("COIMBATORE ??? I'm so touched dear 😂🤣");
     setTimeout(()=>popup("Well Noted Ma 👍"),3000);
     hearts();
     setTimeout(next,3000);
@@ -429,9 +429,15 @@ function showEnding(message){
       You just signed the lifetime contract of love, laughter and unlimited drama with me.
       No cancellations allowed. Only upgrades — more love, more hugs, more memories.
       <br><br>
-      Welcome to your permanent position… right next to my heart 💖
+      Welcome to your permanent position… right in my heart 💖
+      <br><br>
+      Special Note : Go to XXXXXX & answer their questions. You will be rewarded  
     </p>
     <div class="ending-popup">${message}</div>
+    <p>
+      <br><br>
+      Special Note : Go to XXXXXX & answer their questions. You will be rewarded
+    </p>
   </div>`;
 
   startBackgroundHearts();
