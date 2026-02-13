@@ -295,13 +295,13 @@ function startQuiz(){
 }
 
 function showQuestion() {
-  const q = questions[index];
-  document.getElementById("question").innerText = q.q;
+  const ques = questions[index];
+  document.getElementById("question").innerText = ques.q;
 
   const optDiv = document.getElementById("options");
   optDiv.innerHTML = "";
 
-  q.options.forEach((opt,i)=>{
+  ques.options.forEach((opt,i)=>{
     const btn = document.createElement("button");
     btn.className = "option";
     btn.innerText = opt;
