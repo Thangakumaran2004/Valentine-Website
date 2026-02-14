@@ -245,7 +245,7 @@ h1 {
 <!-- Intro Screen -->
 <div class="intro-screen" id="intro">
   <div class="intro-box glass-card">
-    <div class="intro-title">Hey You 💕</div>
+    <div class="intro-title">Hey Sindhu 💕</div>
     <div class="intro-sub">Are you ready for something special?</div>
     <button class="start-btn" onclick="startQuiz()">Yes I'm Ready ✨</button>
   </div>
@@ -253,7 +253,7 @@ h1 {
 
 <div class="container">
   <div class="glass-card" id="card" style="display:none">
-    <h1>License to live with me 💕</h1>
+    <h1>License to live with Shiv 💕</h1>
     <div class="question" id="question"></div>
     <div id="options"></div>
   </div>
@@ -301,6 +301,12 @@ function showQuestion() {
   const optDiv = document.getElementById("options");
   optDiv.innerHTML = "";
 
+  // ⭐ IMPORTANT MOBILE FIX
+  if(interval){
+    clearInterval(interval);
+    interval = null;
+  }
+
   ques.options.forEach((opt,i)=>{
     const btn = document.createElement("button");
     btn.className = "option";
@@ -315,6 +321,7 @@ function showQuestion() {
     optDiv.appendChild(btn);
   });
 }
+
 
 function popup(text){
   const p = document.createElement("div");
@@ -422,25 +429,31 @@ function next(){
 }
 
 function showEnding(message){
-  document.body.innerHTML=`
-  <div class="ending">
-    <h2>Forever Starts Now 💍</h2>
-    <p>
-      You just signed the lifetime contract of love, laughter and unlimited drama with me.
-      No cancellations allowed. Only upgrades — more love, more hugs, more memories.
-      <br><br>
-      Welcome to your permanent position… right in my heart 💖
-      
-    </p>
-    <div class="ending-popup">${message}</div>
-    <p>
-      <br><br>
-      Special Note : Go to XXXXXX & answer their questions. You will be rewarded
-    </p>
-  </div>`;
 
-  startBackgroundHearts();
-  hearts(20);
+  // ⭐ MOBILE CLICK SAFETY DELAY
+  setTimeout(()=>{
+
+    document.body.innerHTML=`
+    <div class="ending">
+      <h2>Forever Starts Now 💍</h2>
+      <p>
+        You just signed the lifetime contract of love, laughter and unlimited drama with me.
+        No cancellations allowed. Only upgrades — more love, more hugs, more memories.
+        <br><br>
+        Welcome to your permanent position… right in my heart 💖
+        
+      </p>
+      <div class="ending-popup">${message}</div>
+      <p>
+        <br><br>
+        Special Note : Go to XXXXXX & answer their questions. You will be rewarded
+      </p>
+    </div>`;
+
+    startBackgroundHearts();
+    hearts(20);
+
+  }, 60);
 }
 
 </script>
