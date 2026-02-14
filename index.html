@@ -314,7 +314,10 @@ function showQuestion() {
 
     if(index===3 && i===1){
       noBtn = btn;
+      // Start animation ONLY after NO is clicked
+      btn.addEventListener("click", () => {
       startNoAnimation();
+  });
     }
 
     btn.onclick = ()=>handleAnswer(i);
@@ -430,6 +433,7 @@ function next(){
 
 function showEnding(message){
 
+  noBtn = null;
   // ⭐ MOBILE CLICK SAFETY DELAY
   setTimeout(()=>{
 
@@ -445,7 +449,7 @@ function showEnding(message){
       </p>
       <div class="ending-popup">${message}</div>
       <p>
-        <br><br>
+        <br>
         Do what the note says : Meet Thirupurasundari aunty. Answer her question and get rewarded !! 
       </p>
     </div>`;
